@@ -24,7 +24,8 @@ class App extends React.Component {
           this.state.players.map((player) =>
             <Player name={player.name} score={player.score}
                     id={player.id} key={player.id}
-                    removePlayer={this.handleRemovePlayer}/>)
+                    removePlayer={this.handleRemovePlayer}
+                    changeScore={this.handleChangeScore} />)
         }
       </div>
     )
@@ -37,6 +38,10 @@ class App extends React.Component {
         players: prevState.players.filter(player => player.id !== id)
       })
     )
+  }
+
+  handleChangeScore = (id, delta) => {
+    console.log('handleChangeScore: ', id, delta);
   }
 }
 
