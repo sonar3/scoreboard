@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {Header} from "./components/Header";
 import {Player} from "./components/Player";
+import {AddPlayerForm} from "./components/AddPlayerForm";
 
 class App extends React.Component {
   // Listing UP: 카운터 컴포넌트가 갖고 있는 로컬 state를 최상단 부모로 올리기
@@ -27,6 +28,7 @@ class App extends React.Component {
                     removePlayer={this.handleRemovePlayer}
                     changeScore={this.handleChangeScore} />)
         }
+        <AddPlayerForm/>
       </div>
     )
   }
