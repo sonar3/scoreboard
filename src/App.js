@@ -61,9 +61,9 @@ class App extends React.Component {
   handleAddPlayer = (name) => {
     // name 을 가진 player 객체를 this.state.players 배열에 추가
     console.log(name);
-    const player = {name: name, score: 0, id: ++this.maxId};
 
     this.setState(prevState => {
+      const player = {name, score: 0, id: ++this.maxId}; // short hand property
       prevState.players.push(player);
       return {players: prevState.players}
     })
