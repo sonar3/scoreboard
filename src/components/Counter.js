@@ -17,7 +17,7 @@ export class Counter extends React.Component {
 	}*/
 
 	 static propTypes = {
-		index: PropTypes.number,
+		id: PropTypes.number,
 		score: PropTypes.number,
 		changeScore: PropTypes.func
 	}
