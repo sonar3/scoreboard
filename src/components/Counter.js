@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Counter extends React.Component {
 	// 1. 시간에 따라 변하는 데이터는 state라는 모델로 정의
@@ -15,15 +16,28 @@ export class Counter extends React.Component {
 		this.setState(prevState => ({score: prevState.score + delta}));
 	}*/
 
+	 static propTypes = {
+		index: PropTypes.number,
+		score: PropTypes.number,
+		changeScore: PropTypes.func
+	}
+
 	render() {
+		const {changeScore, id, score} = this.props;
 		return (
 			<div className="counter">
 				<button className="counter-action decrement"
-								onClick={() => this.props.changeScore(this.props.id, -1)}> -</button>
-				<span className="counter-score">{this.props.score}</span>
+								onClick={() => changeScore(id, -1)}> -</button>
+				<span className="counter-score">{score}</span>
 				<button className="counter-action increment"
-								onClick={() => this.props.changeScore(this.props.id, 1)}> +</button>
+								onClick={() => changeScore(id, 1)}> +</button>
 			</div>
 		)
 	}
 }
+
+// Counter.propTypes = {
+// 	index: PropTypes.number,
+// 	score: PropTypes.number,
+// 	changeScore: PropTypes.func
+// }
