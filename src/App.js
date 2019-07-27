@@ -16,6 +16,8 @@ class App extends React.Component {
     ]
   }
 
+  maxId = 4;  // 편의상 추가
+
   render() {
     return (
       <div className="scoreboard">
@@ -28,7 +30,7 @@ class App extends React.Component {
                     removePlayer={this.handleRemovePlayer}
                     changeScore={this.handleChangeScore} />)
         }
-        <AddPlayerForm/>
+        <AddPlayerForm addPlayer={this.handleAddPlayer} />
       </div>
     )
   }
@@ -53,6 +55,17 @@ class App extends React.Component {
       return {
         players: [...prevState.players]
       }
+    })
+  }
+
+  handleAddPlayer = (name) => {
+    // name 을 가진 player 객체를 this.state.players 배열에 추가
+    console.log(name);
+    const player = {name: name, score: 0, id: ++this.maxId};
+
+    this.setState(prevState => {
+      prevState.players.push(player);
+      return {players: prevState.players}
     })
   }
 }
