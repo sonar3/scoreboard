@@ -13,8 +13,8 @@ export class Stopwatch extends React.Component {
 			<div className="stopwatch">
 				<h2>StopWatch</h2>
 				<span className="stopwatch-time">{this.state.timer}</span>
-				<button>{this.state.isRunning ? 'stop' : 'start'}</button>
-				<button>Rest</button>
+				<button onClick={this.handleStopWatch}>{this.state.isRunning ? 'stop' : 'start'}</button>
+				<button onClick={this.handleReset}>Reset</button>
 			</div>
 		);
 	}
@@ -25,6 +25,16 @@ export class Stopwatch extends React.Component {
 				timer: prevState.timer +1
 			}));
 		}
+	}
+
+	handleStopWatch = () => {
+		this.setState(prevState => ({
+			isRunning: !prevState.isRunning
+		}))
+	}
+
+	handleReset = () => {
+		this.setState({timer: 0})
 	}
 
 	// Dom이 렌더링 된 직후에 호출되는 라이프 사이클 메서드
