@@ -264,3 +264,31 @@ input[type=submit]:hover {
   color: white;
   margin: 0;
 }
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  background: #2db7f5;
+}
+
+.all-title {
+  background: #999999;
+  padding: 1rem;
+  color: white;
+  margin: 0;
+}
+
+.good-title {
+  background: green;
+  padding: 1rem;
+  color: white;
+  margin: 0;
+}
+
+.bad-title {
+  background: red;
+  padding: 1rem;
+  color: white;
+  margin: 0;
+}
