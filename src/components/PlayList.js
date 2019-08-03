@@ -27,8 +27,8 @@ export class PlayList extends React.Component {
 				<p className={titleClass}>{this.props.playerState}</p>
 
 				{
-					this.props.players.map((player) =>
-	 					<CustomPlayer name={player.name} score={player.score}
+					this.props.players.map((player, index) =>
+	 					<CustomPlayer name={player.name} score={player.score} key={index}
 							 id={player.id} key={player.id}
 							 isHighScore={player.score === this.getHighScore()} />
 						)

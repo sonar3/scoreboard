@@ -1,4 +1,4 @@
-import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "../actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER, SET_ISSORTED} from "../actionTypes";
 
 const playerInitialState = {
 	players: [
@@ -6,7 +6,8 @@ const playerInitialState = {
 		{name: 'HONG', score: 0, id: 2},
 		{name: 'KIM', score: 0, id: 3},
 		{name: 'PARK', score: 0, id: 4},
-	]
+	],
+	isSorted: false
 }
 
 let maxId = 4; // 편의상
@@ -32,6 +33,11 @@ export const playerReducer = (state = playerInitialState, action) => {
 		case REMOVE_PLAYER:
 			players = state.	players.filter(player => player.id !== action.id)
 			return {...state, players}
+
+		case SET_ISSORTED:
+			state.isSorted = action.isSorted;
+			return { ...state }
+
 
 		default:
 			return state;
