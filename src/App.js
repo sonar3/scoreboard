@@ -3,28 +3,20 @@ import './App.css';
 import {Header} from "./components/Header";
 import {Player} from "./components/Player";
 import {AddPlayerForm} from "./components/AddPlayerForm";
+import {connect} from "react-redux";
+import {playerReducer} from "./redux/reducers/player";
 
 class App extends React.Component {
   // Listing UP: 카운터 컴포넌트가 갖고 있는 로컬 state를 최상단 부모로 올리기
   // 로직을 구현하기 위해서 Lifting up이 필요
-  state = {
-    players: [
-      {name: 'LDK', score: 30, id: 1},
-      {name: 'HONG', score: 40, id: 2},
-      {name: 'KIM', score: 50, id: 3},
-      {name: 'PARK', score: 60, id: 4},
-    ]
-  }
-
-  maxId = 4;  // 편의상 추가
 
   render() {
     return (
       <div className="scoreboard">
-        <Header players={this.state.players} />
+        <Header players={this.props.players} />
 
         {
-          this.state.players.map((player) =>
+          this.props.players.map((player) =>
             <Player name={player.name} score={player.score}
                     id={player.id} key={player.id}
                     removePlayer={this.handleRemovePlayer}
@@ -70,4 +62,9 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  // 왼쪽은 props, 오른쪽은 state
+  players: state.playerReducer.players,
+})
+
+export default connect(mapStateToProps, null)(App);
