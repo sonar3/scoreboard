@@ -3,7 +3,7 @@ import Counter from "./Counter";
 import {removePlayer} from "../redux/actions";
 import {connect} from "react-redux";
 
-export class Player extends React.Component {
+export class Player extends React.PureComponent {
 	render() {
 		const {name, score, removePlayer, id, changeScore} = this.props;
 
@@ -13,6 +13,7 @@ export class Player extends React.Component {
 			<div className="player">
 			<span className="player-name">
 				<button className="remove-player" onClick={() => removePlayer(id)}>x</button>
+				{this.props.children}
 				{name}
 			</span>
 				<Counter id={id} score={score} />
@@ -20,14 +21,14 @@ export class Player extends React.Component {
 		);
 	}
 
-	componentWillReceiveProps(nextProps, nextContext) {
+/*	componentWillReceiveProps(nextProps, nextContext) {
 		// console.log('componentWillReceiveProps: ', nextProps);
 	}
 
 	shouldComponentUpdate(nextProps, nextState, nextContext) {
 		// console.log('shouldComponentUpdate: ', nextProps);
 		return this.props.score !== nextProps.score ? true : false;
-	}
+	}*/
 }
 
 const mapActionToProps = (dispatch) => ({
