@@ -19,8 +19,7 @@ class App extends React.Component {
           this.props.players.map((player) =>
             <Player name={player.name} score={player.score}
                     id={player.id} key={player.id}
-                    removePlayer={this.handleRemovePlayer}
-                    changeScore={this.handleChangeScore} />)
+                    removePlayer={this.handleRemovePlayer} />)
         }
         <AddPlayerForm />
       </div>
@@ -34,20 +33,6 @@ class App extends React.Component {
         players: prevState.players.filter(player => player.id !== id)
       })
     )
-  }
-
-  handleChangeScore = (id, delta) => {
-    console.log('handleChangeScore: ', id, delta);
-    this.setState(prevState => {
-      prevState.players.forEach(player => {
-        if (player.id === id) {
-          player.score += delta;
-        }
-      })
-      return {
-        players: [...prevState.players]
-      }
-    })
   }
 }
 

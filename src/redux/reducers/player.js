@@ -1,4 +1,4 @@
-import {ADD_PLAYER} from "../actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE} from "../actionTypes";
 
 const playerInitialState = {
 	players: [
@@ -12,11 +12,21 @@ const playerInitialState = {
 let maxId = 4; // 편의상
 
 export const playerReducer = (state = playerInitialState, action) => {
+	let players;
 	switch (action.type) {
 		case ADD_PLAYER:
-			const players = [...state.players]; // 기존 players를 deep copy
+			players = [...state.players]; // 기존 players를 deep copy
 			const player = {name: action.name, score: 0, id: ++maxId}; // short hand property
 			players.push(player);
+			return {...state, players}
+
+		case CHANGE_SCORE:
+			players = [...state.players];
+			players.forEach(player => {
+				if (player.id === action.id) {
+					player.score += action.delta;
+				}
+			})
 			return {...state, players}
 
 		default:

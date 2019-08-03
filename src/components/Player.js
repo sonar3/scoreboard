@@ -1,5 +1,5 @@
 import React from 'react';
-import {Counter} from "./Counter";
+import Counter from "./Counter";
 
 export class Player extends React.Component {
 	render() {
@@ -13,7 +13,7 @@ export class Player extends React.Component {
 				<button className="remove-player" onClick={() => removePlayer(id)}>x</button>
 				{name}
 			</span>
-				<Counter id={id} score={score} changeScore={changeScore} />
+				<Counter id={id} score={score} />
 			</div>
 		);
 	}
