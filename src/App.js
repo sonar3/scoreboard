@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./components/Header";
-import {Player} from "./components/Player";
+import Player from "./components/Player";
 import AddPlayerForm from "./components/AddPlayerForm";
 import {connect} from "react-redux";
 import {playerReducer} from "./redux/reducers/player";
@@ -18,20 +18,10 @@ class App extends React.Component {
         {
           this.props.players.map((player) =>
             <Player name={player.name} score={player.score}
-                    id={player.id} key={player.id}
-                    removePlayer={this.handleRemovePlayer} />)
+                    id={player.id} key={player.id} />)
         }
         <AddPlayerForm />
       </div>
-    )
-  }
-
-  handleRemovePlayer = (id) => {
-    console.log(id);
-    // 자식을 삭제하는 로직
-    this.setState(prevState => ({
-        players: prevState.players.filter(player => player.id !== id)
-      })
     )
   }
 }

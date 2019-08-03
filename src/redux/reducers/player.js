@@ -1,4 +1,4 @@
-import {ADD_PLAYER, CHANGE_SCORE} from "../actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "../actionTypes";
 
 const playerInitialState = {
 	players: [
@@ -27,6 +27,10 @@ export const playerReducer = (state = playerInitialState, action) => {
 					player.score += action.delta;
 				}
 			})
+			return {...state, players}
+
+		case REMOVE_PLAYER:
+			players = state.	players.filter(player => player.id !== action.id)
 			return {...state, players}
 
 		default:
