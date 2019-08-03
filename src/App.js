@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Header} from "./components/Header";
 import {Player} from "./components/Player";
-import {AddPlayerForm} from "./components/AddPlayerForm";
+import AddPlayerForm from "./components/AddPlayerForm";
 import {connect} from "react-redux";
 import {playerReducer} from "./redux/reducers/player";
 
@@ -22,7 +22,7 @@ class App extends React.Component {
                     removePlayer={this.handleRemovePlayer}
                     changeScore={this.handleChangeScore} />)
         }
-        <AddPlayerForm addPlayer={this.handleAddPlayer} />
+        <AddPlayerForm />
       </div>
     )
   }
@@ -47,17 +47,6 @@ class App extends React.Component {
       return {
         players: [...prevState.players]
       }
-    })
-  }
-
-  handleAddPlayer = (name) => {
-    // name 을 가진 player 객체를 this.state.players 배열에 추가
-    console.log(name);
-
-    this.setState(prevState => {
-      const player = {name, score: 0, id: ++this.maxId}; // short hand property
-      prevState.players.push(player);
-      return {players: prevState.players}
     })
   }
 }

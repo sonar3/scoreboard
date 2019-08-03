@@ -1,4 +1,6 @@
 import React from 'react';
+import {addPlayer} from "../redux/actions";
+import {connect} from "react-redux";
 
 export class AddPlayerForm extends React.Component {
 	// state = {
@@ -41,3 +43,11 @@ export class AddPlayerForm extends React.Component {
 		);
 	}
 }
+
+const mapActionToProps = (dispatch) => ({
+	// 왼쪽은 props, 오른쪽은 펑션(액션을 디스패치하는)
+	addPlayer: (name) => dispatch(addPlayer(name))
+})
+
+// 커링 펑션, HoC
+export default connect(null, mapActionToProps)(AddPlayerForm);
