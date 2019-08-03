@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from "react-redux";
 
 export const Statistics = (props) => {
 	const totalPlayers = props.players.length;
@@ -23,3 +24,10 @@ export const Statistics = (props) => {
 		</table>
 	);
 }
+
+const mapStateToProps = (state) => ({
+	// 왼쪽은 props, 오른쪽은 state
+	players: state.playerReducer.players,
+})
+
+export default connect(mapStateToProps, null)(Statistics);
