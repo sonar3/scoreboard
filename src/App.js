@@ -14,8 +14,9 @@ class App extends React.Component {
   // 로직을 구현하기 위해서 Lifting up이 필요
 
   render() {
-    const goodPlayers = this.props.players.filter(item => item.score >=0);
-    const badPlayers = this.props.players.filter(item => item.score <0);
+    const allPlayers = this.props.filteredPlayers;
+    const goodPlayers = this.props.filteredPlayers.filter(item => item.score >=0);
+    const badPlayers = this.props.filteredPlayers.filter(item => item.score <0);
 
     return (
       <div className="scoreboard">
@@ -27,7 +28,7 @@ class App extends React.Component {
           this.props.isSorted ? [
               <PlayList playerState="Good Players" players={goodPlayers}/>,
               <PlayList playerState="Bad Players" players={badPlayers}/>,
-            ] : <PlayList playerState="All Players" players={this.props.players}/>
+            ] : <PlayList playerState="All Players" players={allPlayers}/>
         }
         <AddPlayerForm />
       </div>
@@ -38,6 +39,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
   // 왼쪽은 props, 오른쪽은 state
   players: state.playerReducer.players,
+  filteredPlayers: state.playerReducer.filteredPlayers,
   isSorted: state.playerReducer.isSorted,
 })
 

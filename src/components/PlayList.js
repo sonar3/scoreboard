@@ -28,7 +28,7 @@ export class PlayList extends React.Component {
 
 				{
 					this.props.players.map((player, index) =>
-	 					<CustomPlayer name={player.name} score={player.score} key={index}
+	 					<CustomPlayer name={player.name} score={player.score}
 							 id={player.id} key={player.id}
 							 isHighScore={player.score === this.getHighScore()} />
 						)

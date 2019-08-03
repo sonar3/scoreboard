@@ -1,10 +1,14 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {removePlayer, setIsSorted} from "../redux/actions";
+import {removePlayer, searchName, setIsSorted} from "../redux/actions";
 
 export class SearchPlayer extends React.Component {
 	handleChange = (e) => {
 		this.props.setIsSorted(e.target.checked);
+	}
+
+	handleSearch = (e) => {
+		this.props.searchName(e.target.value)
 	}
 
 	render() {
@@ -12,6 +16,8 @@ export class SearchPlayer extends React.Component {
 		return (
 			<div className="search-box">
 				<label>
+					<input type="text" placeholder="search name" className="input"
+								 onChange={this.handleSearch}></input>
 					<input type="checkbox" checked={this.props.isSorted}
 						onChange={this.handleChange}></input>
 					show good player and bad player
@@ -28,7 +34,8 @@ const mapStateToProps = (state) => ({
 
 const mapActionToProps = (dispatch) => ({
 	// 왼쪽은 props, 오른쪽은 펑션(액션을 디스패치하는)
-	setIsSorted: (isSorted) => dispatch(setIsSorted(isSorted))
+	setIsSorted: (isSorted) => dispatch(setIsSorted(isSorted)),
+	searchName: (keyword) => dispatch(searchName(keyword))
 })
 
 export default connect(mapStateToProps, mapActionToProps)(SearchPlayer);
