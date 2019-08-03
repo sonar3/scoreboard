@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
 import {Root} from "./pages/Root";
+
+import 'bootstrap/dist/css/bootstrap.css'; // 모든 페이지에 적용되는 글로벌 css
+import './index.css';
 
 ReactDOM.render(<Provider store={store}><Root /></Provider>, document.getElementById('root'));
 
